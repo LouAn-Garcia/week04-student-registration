@@ -591,7 +591,7 @@ This screenshot shows the success flash message displayed after a student has be
 
 This screenshot shows the uploaded student profile picture displayed by the application after successful registration.
 
-![Uploaded Profile Picture](screenshots/uploaded-profile-picture.png)
+![Uploaded Profile Picture](screenshots/uploaded-image.png)
 
 *Figure 5. Uploaded Student Profile Picture*
 
