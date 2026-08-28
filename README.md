@@ -637,6 +637,37 @@ This screenshot shows the project's GitHub repository and commit history.
 
 ---
 
+## Documentation Diagrams
+
+### Laravel Request Lifecycle Diagram
+
+The diagram illustrates how a student registration request moves through the Laravel application, from the browser and route to the controller, validation, model, database, and response.
+
+![Laravel Request Lifecycle](documentation/Laravel-Request-Lifecycle-Diagram.png)
+
+*Figure 10. Laravel Request Lifecycle*
+
+---
+
+### Database Entity Relationship Diagram
+
+The ERD illustrates the structure of the `students` table, including its fields, data types, primary key, and unique constraints.
+
+![Database ER Diagram](documentation/database-erd.png)
+
+*Figure 11. Database Entity Relationship Diagram*
+
+---
+
+### Registration Flowchart
+
+The flowchart illustrates the steps involved in registering a student, including form submission, validation, error handling, database storage, profile picture uploading, and successful registration.
+
+![Registration Flowchart](documentation/registration-flowchart.png)
+
+*Figure 12. Student Registration Flowchart*
+
+
 ## 9. Problems Encountered
 
 ### Problem 1: Database Migration Error
