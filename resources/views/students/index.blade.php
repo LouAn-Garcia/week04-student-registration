@@ -13,137 +13,285 @@
 
 </head>
 
-<body class="bg-gray-100 min-h-screen py-10">
+<body class="min-h-screen bg-slate-100">
 
 ```
-<div class="max-w-6xl mx-auto px-4">
+<!-- Header -->
+<header class="bg-blue-500 text-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-6 py-5">
 
-    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="flex items-center justify-between">
 
-        <div class="bg-blue-600 text-white p-6">
             <h1 class="text-2xl font-bold">
-                Registered Students
+                Student Registration System
             </h1>
 
-            <p class="mt-1">
-                List of students registered in the system
-            </p>
+            <a
+                href="{{ url('/') }}"
+                class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg text-sm font-medium transition"
+            >
+                Register Student
+            </a>
+
         </div>
 
-        <div class="p-6">
+    </div>
+</header>
 
-            @if ($students->count() > 0)
 
-                <div class="overflow-x-auto">
+<!-- Main -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
 
-                    <table class="w-full border-collapse">
+    <!-- Heading -->
+    <div class="mb-8">
 
-                        <thead>
-                            <tr class="bg-gray-100 text-left">
+        <p class="text-blue-500 font-semibold text-sm uppercase tracking-wide">
+            Student Records
+        </p>
 
-                                <th class="p-3 border">
-                                    Profile
-                                </th>
+        <h2 class="text-3xl font-bold text-slate-800 mt-1">
+            Registered Students
+        </h2>
 
-                                <th class="p-3 border">
-                                    Student ID
-                                </th>
+        <p class="text-slate-500 mt-2">
+            View all students registered in the system.
+        </p>
 
-                                <th class="p-3 border">
-                                    Name
-                                </th>
+    </div>
 
-                                <th class="p-3 border">
-                                    Email
-                                </th>
 
-                                <th class="p-3 border">
-                                    Program
-                                </th>
+    <!-- Student Count -->
+    <div class="mb-6">
 
-                                <th class="p-3 border">
-                                    Year Level
-                                </th>
+        <div class="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-4 py-3 shadow-sm">
 
-                            </tr>
-                        </thead>
+            <span class="text-sm text-slate-500">
+                Total Registered Students:
+            </span>
 
-                        <tbody>
-
-                            @foreach ($students as $student)
-
-                                <tr class="hover:bg-gray-50">
-
-                                    <td class="p-3 border">
-
-                                        <img
-                                            src="{{ asset('storage/' . $student->profile_picture) }}"
-                                            alt="Profile Picture"
-                                            class="w-12 h-12 rounded-full object-cover"
-                                        >
-
-                                    </td>
-
-                                    <td class="p-3 border">
-                                        {{ $student->student_id }}
-                                    </td>
-
-                                    <td class="p-3 border">
-                                        {{ $student->first_name }}
-                                        {{ $student->middle_name }}
-                                        {{ $student->last_name }}
-                                    </td>
-
-                                    <td class="p-3 border">
-                                        {{ $student->email }}
-                                    </td>
-
-                                    <td class="p-3 border">
-                                        {{ $student->program }}
-                                    </td>
-
-                                    <td class="p-3 border">
-                                        {{ $student->year_level }}
-                                    </td>
-
-                                </tr>
-
-                            @endforeach
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-            @else
-
-                <div class="text-center py-10">
-
-                    <p class="text-gray-500">
-                        No students have been registered yet.
-                    </p>
-
-                </div>
-
-            @endif
-
-            <div class="mt-6">
-
-                <a
-                    href="{{ url('/') }}"
-                    class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg"
-                >
-                    Register New Student
-                </a>
-
-            </div>
+            <span class="font-bold text-blue-600">
+                {{ $students->count() }}
+            </span>
 
         </div>
 
     </div>
 
-</div>
+
+    <!-- Students -->
+    @if ($students->count() > 0)
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+
+            <!-- Desktop Table -->
+            <div class="hidden md:block overflow-x-auto">
+
+                <table class="w-full">
+
+                    <thead>
+                        <tr class="bg-blue-50 border-b border-blue-100">
+
+                            <th class="text-left px-6 py-4 text-sm font-semibold text-slate-700">
+                                Student
+                            </th>
+
+                            <th class="text-left px-6 py-4 text-sm font-semibold text-slate-700">
+                                Student ID
+                            </th>
+
+                            <th class="text-left px-6 py-4 text-sm font-semibold text-slate-700">
+                                Email
+                            </th>
+
+                            <th class="text-left px-6 py-4 text-sm font-semibold text-slate-700">
+                                Program
+                            </th>
+
+                            <th class="text-left px-6 py-4 text-sm font-semibold text-slate-700">
+                                Year Level
+                            </th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody class="divide-y divide-slate-100">
+
+                        @foreach ($students as $student)
+
+                            <tr class="hover:bg-slate-50 transition">
+
+                                <!-- Student -->
+                                <td class="px-6 py-4">
+
+                                    <div class="flex items-center gap-3">
+
+                                        <img
+                                            src="{{ asset('storage/' . $student->profile_picture) }}"
+                                            alt="Profile Picture"
+                                            class="w-12 h-12 rounded-full object-cover border-2 border-blue-100"
+                                        >
+
+                                        <div>
+
+                                            <p class="font-semibold text-slate-800">
+                                                {{ $student->first_name }}
+                                                {{ $student->middle_name }}
+                                                {{ $student->last_name }}
+                                            </p>
+
+                                            <p class="text-xs text-slate-400">
+                                                {{ $student->gender }}
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- Student ID -->
+                                <td class="px-6 py-4">
+
+                                    <span class="font-medium text-blue-600">
+                                        {{ $student->student_id }}
+                                    </span>
+
+                                </td>
+
+
+                                <!-- Email -->
+                                <td class="px-6 py-4 text-sm text-slate-600">
+                                    {{ $student->email }}
+                                </td>
+
+
+                                <!-- Program -->
+                                <td class="px-6 py-4">
+
+                                    <span class="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">
+                                        {{ $student->program }}
+                                    </span>
+
+                                </td>
+
+
+                                <!-- Year -->
+                                <td class="px-6 py-4 text-sm text-slate-600">
+                                    {{ $student->year_level }}
+                                </td>
+
+                            </tr>
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Mobile Cards -->
+            <div class="md:hidden divide-y divide-slate-100">
+
+                @foreach ($students as $student)
+
+                    <div class="p-5">
+
+                        <div class="flex items-center gap-4">
+
+                            <img
+                                src="{{ asset('storage/' . $student->profile_picture) }}"
+                                alt="Profile Picture"
+                                class="w-16 h-16 rounded-full object-cover border-2 border-blue-100"
+                            >
+
+                            <div>
+
+                                <h3 class="font-bold text-slate-800">
+                                    {{ $student->first_name }}
+                                    {{ $student->middle_name }}
+                                    {{ $student->last_name }}
+                                </h3>
+
+                                <p class="text-blue-600 text-sm font-semibold">
+                                    {{ $student->student_id }}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mt-4 space-y-2 text-sm">
+
+                            <p>
+                                <span class="text-slate-400">Email:</span>
+                                <span class="text-slate-700">
+                                    {{ $student->email }}
+                                </span>
+                            </p>
+
+                            <p>
+                                <span class="text-slate-400">Program:</span>
+                                <span class="text-slate-700">
+                                    {{ $student->program }}
+                                </span>
+                            </p>
+
+                            <p>
+                                <span class="text-slate-400">Year:</span>
+                                <span class="text-slate-700">
+                                    {{ $student->year_level }}
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                @endforeach
+
+            </div>
+
+        </div>
+
+    @else
+
+        <!-- Empty State -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm text-center py-16 px-6">
+
+            <div class="w-16 h-16 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mx-auto text-2xl">
+                👤
+            </div>
+
+            <h3 class="text-xl font-bold text-slate-800 mt-5">
+                No Students Yet
+            </h3>
+
+            <p class="text-slate-500 mt-2">
+                There are currently no registered students.
+            </p>
+
+            <a
+                href="{{ url('/') }}"
+                class="inline-block mt-6 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl transition"
+            >
+                Register First Student
+            </a>
+
+        </div>
+
+    @endif
+
+</main>
+
+
+<!-- Footer -->
+<footer class="text-center text-sm text-slate-500 py-6">
+    Student Registration System &copy; {{ date('Y') }}
+</footer>
 ```
 
 </body>

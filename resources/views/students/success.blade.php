@@ -13,118 +13,232 @@
 
 </head>
 
-<body class="bg-gray-100 min-h-screen py-10">
+<body class="min-h-screen bg-slate-100">
 
 ```
-<div class="max-w-3xl mx-auto px-4">
+<!-- Header -->
+<header class="bg-blue-500 text-white shadow-lg">
+    <div class="max-w-5xl mx-auto px-6 py-5">
 
-    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="flex items-center justify-between">
 
-        <!-- Success Banner -->
-        <div class="bg-green-600 text-white text-center p-6">
             <h1 class="text-2xl font-bold">
-                Student Registered Successfully!
+                Student Registration System
             </h1>
 
-            <p class="mt-2">
-                The student's information has been saved successfully.
-            </p>
+            <a
+                href="{{ url('/students') }}"
+                class="hidden sm:inline-block bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg text-sm font-medium transition"
+            >
+                Registered Students
+            </a>
+
         </div>
 
-        <!-- Profile -->
-        <div class="p-8">
+    </div>
+</header>
 
-            <div class="flex flex-col items-center mb-8">
 
-                <img
-                    src="{{ asset('storage/' . $student->profile_picture) }}"
-                    alt="Student Profile Picture"
-                    class="w-40 h-40 rounded-full object-cover border-4 border-gray-200 shadow"
-                >
+<!-- Main -->
+<main class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
 
-                <h2 class="text-2xl font-bold text-gray-800 mt-4">
-                    {{ $student->first_name }}
-                    {{ $student->middle_name }}
-                    {{ $student->last_name }}
-                </h2>
+    <!-- Success Banner -->
+    @if (session('success'))
 
-                <p class="text-gray-500">
-                    {{ $student->student_id }}
-                </p>
+        <div class="mb-8 bg-green-50 border border-green-200 rounded-2xl p-5">
+
+            <div class="flex items-center gap-3">
+
+                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-xl">
+                    ✓
+                </div>
+
+                <div>
+                    <h2 class="font-bold text-green-800">
+                        Registration Successful!
+                    </h2>
+
+                    <p class="text-sm text-green-700 mt-1">
+                        {{ session('success') }}
+                    </p>
+                </div>
 
             </div>
 
-            <!-- Student Details -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        </div>
 
-                <div>
-                    <p class="text-sm text-gray-500">Email</p>
-                    <p class="font-medium">
+    @endif
+
+
+    <!-- Profile Card -->
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+
+        <!-- Card Header -->
+        <div class="bg-blue-50 px-6 sm:px-8 py-6 border-b border-blue-100">
+
+            <h2 class="text-2xl font-bold text-slate-800">
+                Student Profile
+            </h2>
+
+            <p class="text-slate-500 mt-1">
+                Registered student information
+            </p>
+
+        </div>
+
+
+        <!-- Profile -->
+        <div class="p-6 sm:p-8">
+
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-8">
+
+                <!-- Profile Picture -->
+                <img
+                    src="{{ asset('storage/' . $student->profile_picture) }}"
+                    alt="Profile Picture"
+                    class="w-32 h-32 rounded-2xl object-cover border-4 border-blue-100 shadow-sm"
+                >
+
+                <div class="text-center sm:text-left">
+
+                    <h3 class="text-2xl font-bold text-slate-800">
+                        {{ $student->first_name }}
+                        {{ $student->middle_name }}
+                        {{ $student->last_name }}
+                    </h3>
+
+                    <p class="text-blue-600 font-semibold mt-1">
+                        {{ $student->student_id }}
+                    </p>
+
+                    <p class="text-slate-500 text-sm mt-2">
+                        {{ $student->program }} · {{ $student->year_level }}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Information Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <!-- Email -->
+                <div class="bg-slate-50 rounded-xl p-4">
+                    <p class="text-xs font-semibold text-slate-400 uppercase">
+                        Email Address
+                    </p>
+
+                    <p class="text-slate-800 font-medium mt-1">
                         {{ $student->email }}
                     </p>
                 </div>
 
-                <div>
-                    <p class="text-sm text-gray-500">Mobile Number</p>
-                    <p class="font-medium">
+
+                <!-- Mobile -->
+                <div class="bg-slate-50 rounded-xl p-4">
+                    <p class="text-xs font-semibold text-slate-400 uppercase">
+                        Mobile Number
+                    </p>
+
+                    <p class="text-slate-800 font-medium mt-1">
                         {{ $student->mobile_number }}
                     </p>
                 </div>
 
-                <div>
-                    <p class="text-sm text-gray-500">Date of Birth</p>
-                    <p class="font-medium">
-                        {{ $student->date_of_birth }}
+
+                <!-- Date of Birth -->
+                <div class="bg-slate-50 rounded-xl p-4">
+                    <p class="text-xs font-semibold text-slate-400 uppercase">
+                        Date of Birth
+                    </p>
+
+                    <p class="text-slate-800 font-medium mt-1">
+                        {{ $student->date_of_birth->format('F d, Y') }}
                     </p>
                 </div>
 
-                <div>
-                    <p class="text-sm text-gray-500">Gender</p>
-                    <p class="font-medium">
+
+                <!-- Gender -->
+                <div class="bg-slate-50 rounded-xl p-4">
+                    <p class="text-xs font-semibold text-slate-400 uppercase">
+                        Gender
+                    </p>
+
+                    <p class="text-slate-800 font-medium mt-1">
                         {{ $student->gender }}
                     </p>
                 </div>
 
-                <div>
-                    <p class="text-sm text-gray-500">Program</p>
-                    <p class="font-medium">
+
+                <!-- Program -->
+                <div class="bg-slate-50 rounded-xl p-4">
+                    <p class="text-xs font-semibold text-slate-400 uppercase">
+                        Program
+                    </p>
+
+                    <p class="text-slate-800 font-medium mt-1">
                         {{ $student->program }}
                     </p>
                 </div>
 
-                <div>
-                    <p class="text-sm text-gray-500">Year Level</p>
-                    <p class="font-medium">
+
+                <!-- Year Level -->
+                <div class="bg-slate-50 rounded-xl p-4">
+                    <p class="text-xs font-semibold text-slate-400 uppercase">
+                        Year Level
+                    </p>
+
+                    <p class="text-slate-800 font-medium mt-1">
                         {{ $student->year_level }}
                     </p>
                 </div>
 
-                <div class="md:col-span-2">
-                    <p class="text-sm text-gray-500">Address</p>
-                    <p class="font-medium">
+
+                <!-- Address -->
+                <div class="bg-slate-50 rounded-xl p-4 md:col-span-2">
+                    <p class="text-xs font-semibold text-slate-400 uppercase">
+                        Address
+                    </p>
+
+                    <p class="text-slate-800 font-medium mt-1">
                         {{ $student->address }}
                     </p>
                 </div>
 
             </div>
 
-            <!-- Register Another Student -->
-            <div class="mt-8 text-center">
+        </div>
 
-                <a
-                    href="{{ url('/') }}"
-                    class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg"
-                >
-                    Register Another Student
-                </a>
 
-            </div>
+        <!-- Actions -->
+        <div class="bg-slate-50 px-6 sm:px-8 py-5 flex flex-col sm:flex-row gap-3 justify-end">
+
+            <a
+                href="{{ url('/') }}"
+                class="text-center px-6 py-3 rounded-xl border border-slate-300 text-slate-700 font-semibold hover:bg-white transition"
+            >
+                Register Another Student
+            </a>
+
+            <a
+                href="{{ url('/students') }}"
+                class="text-center px-6 py-3 rounded-xl bg-blue-500 text-white font-semibold hover:bg-blue-600 transition"
+            >
+                View All Students
+            </a>
 
         </div>
 
     </div>
 
-</div>
+</main>
+
+
+<!-- Footer -->
+<footer class="text-center text-sm text-slate-500 py-6">
+    Student Registration System &copy; {{ date('Y') }}
+</footer>
 ```
 
 </body>
