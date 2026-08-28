@@ -45,4 +45,10 @@ class StudentController extends Controller
     {
         return view('students.success', compact('student'));
     }
+    public function index()
+    {
+        $students = Student::latest()->get();
+
+        return view('students.index', compact('students'));
+    }
 }

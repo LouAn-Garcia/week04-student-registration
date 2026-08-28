@@ -10,3 +10,6 @@ Route::post('/register', [StudentController::class, 'store'])
 
 Route::get('/registration-success/{student}', [StudentController::class, 'success'])
     ->name('students.success');
+
+Route::get('/students', [StudentController::class, 'index'])
+    ->name('students.index');
