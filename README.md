@@ -451,6 +451,192 @@ The registered student's information and uploaded profile picture are displayed 
 
 The registration process is completed successfully.
 
+## 8. Screenshots
+
+The following screenshots document the development and functionality of the Student Registration System.
+
+### 8.1 Registration Form
+
+This screenshot shows the student registration form containing the required personal, contact, academic, and additional information fields.
+
+![Registration Form](screenshots/registration.png)
+
+*Figure 1. Student Registration Form*
+
+---
+
+### 8.2 Validation Errors
+
+This screenshot shows Laravel displaying validation errors when the submitted information does not satisfy the required validation rules.
+
+![Validation Errors](screenshots/validation-error.png)
+
+*Figure 2. Validation Error Messages*
+
+---
+
+### 8.3 Successful Registration
+
+This screenshot shows the successful registration page after valid student information has been submitted.
+
+![Successful Registration](screenshots/successful-registration.png)
+
+*Figure 3. Successful Student Registration*
+
+---
+
+### 8.4 Flash Message
+
+This screenshot shows the success flash message displayed after a student has been successfully registered.
+
+![Flash Message](screenshots/flash-message.png)
+
+*Figure 4. Registration Success Flash Message*
+
+---
+
+### 8.5 Uploaded Profile Picture
+
+This screenshot shows the uploaded student profile picture displayed by the application after successful registration.
+
+![Uploaded Profile Picture](screenshots/uploaded-image.png)
+
+*Figure 5. Uploaded Student Profile Picture*
+
+---
+
+### 8.6 Database Table
+
+This screenshot shows the `students` table containing the information submitted through the registration form.
+
+![Database Table](screenshots/database-table.png)
+
+*Figure 6. Students Database Table*
+
+---
+
+### 8.7 Student Profile Page
+
+This screenshot shows the registered student's information and profile picture displayed on the student profile page.
+
+![Student Profile Page](screenshots/student-profile.png)
+
+*Figure 7. Registered Student Profile*
+
+---
+
+### 8.8 VS Code Project Structure
+
+This screenshot shows the Laravel project structure in Visual Studio Code, including the application, database, resources, routes, and other project files.
+
+![VS Code Project Structure](screenshots/vscode-project-structure.png)
+
+*Figure 8. Laravel Project Structure in Visual Studio Code*
+
+---
+
+### 8.9 GitHub Repository
+
+This screenshot shows the project's GitHub repository and commit history.
+
+![GitHub Repository](screenshots/github-repository.png)
+
+*Figure 9. Student Registration System GitHub Repository*
+
+## 8. Screenshots
+
+The following screenshots document the development and functionality of the Student Registration System.
+
+### 8.1 Registration Form
+
+This screenshot shows the student registration form containing the required personal, contact, academic, and additional information fields.
+
+![Registration Form](screenshots/registration-form.png)
+
+*Figure 1. Student Registration Form*
+
+---
+
+### 8.2 Validation Errors
+
+This screenshot shows Laravel displaying validation errors when the submitted information does not satisfy the required validation rules.
+
+![Validation Errors](screenshots/validation-errors.png)
+
+*Figure 2. Validation Error Messages*
+
+---
+
+### 8.3 Successful Registration
+
+This screenshot shows the successful registration page after valid student information has been submitted.
+
+![Successful Registration](screenshots/successful-registration.png)
+
+*Figure 3. Successful Student Registration*
+
+---
+
+### 8.4 Flash Message
+
+This screenshot shows the success flash message displayed after a student has been successfully registered.
+
+![Flash Message](screenshots/flash-message.png)
+
+*Figure 4. Registration Success Flash Message*
+
+---
+
+### 8.5 Uploaded Profile Picture
+
+This screenshot shows the uploaded student profile picture displayed by the application after successful registration.
+
+![Uploaded Profile Picture](screenshots/uploaded-profile-picture.png)
+
+*Figure 5. Uploaded Student Profile Picture*
+
+---
+
+### 8.6 Database Table
+
+This screenshot shows the `students` table containing the information submitted through the registration form.
+
+![Database Table](screenshots/database-table.png)
+
+*Figure 6. Students Database Table*
+
+---
+
+### 8.7 Student Profile Page
+
+This screenshot shows the registered student's information and profile picture displayed on the student profile page.
+
+![Student Profile Page](screenshots/student-profile.png)
+
+*Figure 7. Registered Student Profile*
+
+---
+
+### 8.8 VS Code Project Structure
+
+This screenshot shows the Laravel project structure in Visual Studio Code, including the application, database, resources, routes, and other project files.
+
+![VS Code Project Structure](screenshots/vscode-project-structure.png)
+
+*Figure 8. Laravel Project Structure in Visual Studio Code*
+
+---
+
+### 8.9 GitHub Repository
+
+This screenshot shows the project's GitHub repository and commit history.
+
+![GitHub Repository](screenshots/github-repository.png)
+
+*Figure 9. Student Registration System GitHub Repository*
+
+---
+
 ## 9. Problems Encountered
 
 ### Problem 1: Database Migration Error
