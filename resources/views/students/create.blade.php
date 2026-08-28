@@ -70,10 +70,13 @@
                     value="{{ old('student_id') }}"
                     class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     placeholder="e.g. 2026-00001"
-                >
-            </div>
 
-            <!-- First Name -->
+                >
+                @error('student_id')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+                    <!-- First Name -->
             <div>
                 <label class="block font-medium text-gray-700 mb-2">
                     First Name *
