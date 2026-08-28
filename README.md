@@ -451,3 +451,127 @@ The registered student's information and uploaded profile picture are displayed 
 
 The registration process is completed successfully.
 
+## 9. Problems Encountered
+
+### Problem 1: Database Migration Error
+
+One of the challenges encountered during development was an error while running the student database migration. The migration initially produced an error indicating that the `CreateStudentsTable` class could not be found. This happened because the migration file did not contain the correct migration class structure.
+
+### Problem 2: View Not Found Errors
+
+Another challenge was Laravel displaying errors such as `View [students.create] not found` and `View [students.success] not found`. These errors occurred because Laravel could not locate the Blade template files in the expected `resources/views/students` directory.
+
+### Problem 3: Storage Link Error
+
+An issue was also encountered when creating the Laravel storage symbolic link. Laravel displayed a message stating that the storage link already existed. This occurred because the `public/storage` link had already been created.
+
+### Problem 4: Duplicate Class Declaration
+
+During controller development, a `Cannot redeclare class` error appeared. The problem was caused by duplicate or incorrectly named classes inside the controller files, which caused Laravel to load the same class name more than once.
+
+### Problem 5: Duplicate Student Registration
+
+When testing the registration form, Laravel displayed messages such as:
+
+* `The student id has already been taken.`
+* `The email has already been taken.`
+
+This occurred because the database and validation rules correctly detected that the Student ID and email address had already been registered.
+
+---
+
+## 10. Solutions
+
+### Solution 1: Correcting the Migration
+
+The migration file was checked and corrected so that it contained the proper Laravel migration structure with the `up()` and `down()` methods. After correcting the file, the migration was successfully executed using:
+
+```bash
+php artisan migrate
+```
+
+The `students` table was then successfully created in the database.
+
+### Solution 2: Correcting Blade View Locations
+
+The Blade files were placed inside the correct directory:
+
+```text
+resources/views/students/
+```
+
+The required views included:
+
+```text
+create.blade.php
+success.blade.php
+index.blade.php
+```
+
+The controller was then configured to reference the views using the correct names, such as:
+
+```php
+return view('students.create');
+```
+
+and:
+
+```php
+return view('students.success', compact('student'));
+```
+
+### Solution 3: Checking the Storage Link
+
+The command:
+
+```bash
+php artisan storage:link
+```
+
+was used to create the symbolic link between the application's public storage directory and Laravel's storage directory.
+
+When Laravel reported that the link already existed, it meant that the symbolic link had already been successfully created. Therefore, no additional storage link needed to be created.
+
+### Solution 4: Fixing Duplicate Controller Classes
+
+The controller files were checked to ensure that each PHP class had a unique class declaration and the correct namespace. The `StudentController` was kept in:
+
+```text
+app/Http/Controllers/StudentController.php
+```
+
+and the controller's namespace and class name were corrected to prevent duplicate declarations.
+
+### Solution 5: Using Unique Test Data
+
+When duplicate Student ID and email errors appeared, different test information was used. The validation behavior was also tested to confirm that the system correctly prevents duplicate Student IDs and email addresses.
+
+---
+
+## 11. Reflection
+
+Developing the Student Registration System helped me understand the importance of validation, user input handling, file security, and the overall structure of a Laravel web application. One of the most important lessons I learned is that data validation is necessary to maintain the quality and reliability of information stored in a database. Without validation, users could submit incomplete, incorrectly formatted, or duplicate information. In this project, Laravel validation was used to check required fields, email formats, unique Student IDs and email addresses, numeric mobile numbers, and uploaded profile pictures.
+
+I also learned that handling user input requires more than simply collecting information from a form. The submitted data must be checked before it is processed and stored. This prevents unexpected or invalid values from entering the database. Laravel made this process easier because validation rules can be defined directly in the controller. I also learned how validation errors can be returned to the registration form so users can correct their input.
+
+Server-side validation is especially important because client-side validation alone cannot be fully trusted. Client-side validation improves the user experience by providing immediate feedback in the browser, but users can bypass browser-based checks. Server-side validation happens on the application server, meaning that submitted data is checked before the application accepts and stores it. Using both client-side and server-side validation provides better usability while maintaining stronger data protection.
+
+Another important lesson was file security. The profile picture upload feature showed me that uploaded files should not simply be accepted without checking them. The application validates that the uploaded file is an image, limits the accepted formats to JPG, JPEG, and PNG, and restricts the file size to 2 MB. These restrictions help prevent inappropriate or unnecessarily large files from being uploaded. Storing the file path in the database while using Laravel Storage for the actual file also provides a more organized approach to file management.
+
+The project also helped me understand how registration systems are used in real-world enterprise software. Organizations such as schools, companies, hospitals, and government institutions need systems that can collect and manage information efficiently. A registration system can serve as the starting point for other features such as authentication, reporting, dashboards, record management, and automated processes.
+
+Overall, this activity improved my understanding of Laravel's MVC architecture, Blade forms, routing, controllers, models, migrations, validation, database operations, and file storage. It also taught me that a functional application must consider not only its interface but also the accuracy, security, and reliability of the data it handles.
+
+---
+
+## 12. References
+
+Laravel. (n.d.). *Laravel documentation*. https://laravel.com/docs
+
+PHP Documentation Group. (n.d.). *PHP manual*. https://www.php.net/docs.php
+
+Oracle. (n.d.). *MySQL documentation*. https://dev.mysql.com/doc/
+
+Tailwind Labs. (n.d.). *Tailwind CSS documentation*. https://tailwindcss.com/docs
+
+MDN Web Docs. (n.d.). *MDN Web Docs*. https://developer.mozilla.org/
