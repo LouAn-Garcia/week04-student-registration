@@ -20,4 +20,7 @@ class Student extends Model
         'address',
         'profile_picture',
     ];
+    protected $casts = [
+    'date_of_birth' => 'date',
+    ];
 }
